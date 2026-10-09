@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "description": "Testing Dependabot and GitHub Actions bots",
   "dependencies": {
-    "lodash": "4.17.15"
+    "lodash": "4.18.1"
   }
 }
