@@ -1,0 +1,8 @@
+{
+  "name": "bot-testing-repo",
+  "version": "1.0.0",
+  "description": "Testing Dependabot and GitHub Actions bots",
+  "dependencies": {
+    "lodash": "4.17.15"
+  }
+}
