@@ -1,0 +1,28 @@
+name: Actions Bot Daily Activity
+
+on:
+  schedule:
+    - cron: '0 4 * * *'  # প্রতিদিন নির্দিষ্ট সময়ে চলবে
+  workflow_dispatch:      # ম্যানুয়ালি Actions ট্যাব থেকে টেস্ট রান দেওয়ার জন্য
+
+permissions:
+  contents: write         # রিপোজিটরিতে কোড পুশ করার পারমিশন
+
+jobs:
+  daily-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Update Log File
+        run: |
+          echo "Activity log updated on: $(date)" >> bot-log.txt
+
+      - name: Commit and Push as github-actions[bot]
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add bot-log.txt
+          git commit -m "chore: automated daily update [skip ci]" || exit 0
+          git push
